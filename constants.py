@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 # Created by: Christina Ngwa
+#!/usr/bin/env python3
+
+# Created by: Christina Ngwa
 # Created on: October 2019
 # This constants file is fore Space Alien game
 

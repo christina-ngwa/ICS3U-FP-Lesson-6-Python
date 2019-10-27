@@ -15,7 +15,7 @@ def game_scene():
     # This function is a scene
 
     # buttons that you want to keep state information on
-    a_button = contants.button_state["button_up"]
+    a_button = constants.button_state["button_up"]
     b_button = constants.button_state["button_up"]
     start_button = constants.button_state["button_up"]
     select_button = constants.button_state["button_up"]
@@ -29,14 +29,16 @@ def game_scene():
     # an image bank for CircuitPython
     image_bank_1 = stage.Bank.from_bmp16("space_aliens.bmp")
 
-     # sets the background to image 0 in the bank
-    background = stage.Grid(image_bank_1, constants.SCREEN_X, constants.SCREEN_Y)
+    # sets the background to image 0 in the bank
+    background = stage.Grid(image_bank_1, constants.SCREEN_X,
+                            constants.SCREEN_Y)
 
     # a list of sprites that will be updated every frame
     sprites = []
 
-    ship = stage.Sprite(image_bank_1, 5, int(constants.SCREEN_X / 2 - constants.SPRITE_SIZE / 2),
-                        int(constants.SCREEN_Y - constants.SPRITE_SIZE + constants.SPRITE_SIZE / 2))
+    ship = stage.Sprite(image_bank_1, 5, int(constants.SCREEN_X / 2
+                        - constants.SPRITE_SIZE / 2), int(constants.SCREEN_Y -
+                        constants.SPRITE_SIZE + constants.SPRITE_SIZE / 2))
     sprites.append(ship)  # insert at the top of sprite list
 
     # create a stage for the background to show up on
@@ -56,21 +58,21 @@ def game_scene():
 
         # update game logic
         # A button to fire
-        if keys & ugame.K_x!= 0:
+        if keys & ugame.K_x != 0:
             if a_button == constants.button_state["button_up"]:
                 a_button = constants.button_state["button_just_pressed"]
             elif a_button == constants.button_state["button_just_pressed"]:
                 a_button = constants.button_state["button_still_pressed"]
         else:
-                if a_button == constants.button_state["button_just_pressed"]:
-                    a_button = constants.button_state["button_released"]
-                else:
-                    a_button = contants.button_state["button_up"]
+            if a_button == constants.button_state["button_just_pressed"]:
+                a_button = constants.button_state["button_released"]
+            else:
+                a_button = constants.button_state["button_up"]
 
         # move ship right
-        if keys & ugame.K_RIGHT!= 0:
+        if keys & ugame.K_RIGHT != 0:
             if ship.x > constants.SCREEN_X - constants.SPRITE_SIZE:
-                ship.move(constants.SCREEN_X - contants.SPRITE_SIZE, ship.y)
+                ship.move(constants.SCREEN_X - constants.SPRITE_SIZE, ship.y)
             else:
                 ship.move(ship.x + 1, ship.y)
 
